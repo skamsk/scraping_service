@@ -15,14 +15,17 @@
         </div>
     </div>
 {% endfor %}
+<div class="row mx-auto">
+    <div class="col-md-6">
+        <form method="GET" action="">
+            <div class="mb-3">
+                {{form.as_p}}
+            </div>
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </form>
+    </div>
+</div>
 
-<form method="GET" action="">
-  <label>Город</label><br>
-  <input type="text" name="city"><br>
-  <label>Язык</label><br>
-  <input type="text" name="language"><br>
-  <input type="submit" value="Submit">
-</form>
 {% endblock %}
 
 

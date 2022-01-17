@@ -45,7 +45,7 @@ class Vacancy(models.Model):
     language = models.ForeignKey('language', on_delete=models.CASCADE, verbose_name='Язык программирования')
     timestamp = models.DateField(auto_now_add=True)
 
-    class  Meta:
+    class Meta:
         verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
 
