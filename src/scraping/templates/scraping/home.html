@@ -9,14 +9,20 @@
             <a href="{{obj.url}}">{{obj.title}}</a>
         </div>
         <div class="card-body">
-<!--            <h5 class="card-title">Special title treatment</h5>-->
+            <h5 class="card-title">{{obj.description}}</h5>
             <p class="card-text">{{obj.description}}</p>
                 <p>{{obj.city.name}} | {{obj.language.name}}  {{obj.timestamp}}</p>
         </div>
     </div>
+    {% empty %}
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <h3>К сожалению, по вашему запросу, ничего не найдено</h3>
+            </div>
+        </div>
 {% endfor %}
-<div class="row mx-auto">
-    <div class="col-md-6">
+<div class="row">
+    <div class="col-md-6 mx-auto">
         <form method="GET" action="">
             <div class="mb-3">
                 {{form.as_p}}
