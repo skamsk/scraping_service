@@ -1,8 +1,11 @@
+import jsonfield
 from django.db import models
 
 # Create your models here.
 from django.utils.text import slugify
 
+def default_url():
+    return {"work": "", "dou": ""}
 
 class City(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название населенного пункта', unique=True )
@@ -51,3 +54,17 @@ class Vacancy(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Error(models.Model):
+    timestamp = models.DateField(auto_now_add=True)
+    data = jsonfield.JSONField()
+
+
+class Url(models.Model):
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey('language', on_delete=models.CASCADE, verbose_name='Язык программирования')
+    url_data = jsonfield.JSONField(default=default_url)
+    
+    class Meta:
+        unique_together = ('city', 'language')
